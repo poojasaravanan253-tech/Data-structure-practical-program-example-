@@ -1,0 +1,12 @@
+class Solution:
+    def leaders(self, arr):
+        leaders = []
+        max_right = -1
+        
+        for num in reversed(arr):
+            if num >= max_right:
+                leaders.append(num)
+                max_right = num
+        
+        leaders.reverse()
+        return leaders
