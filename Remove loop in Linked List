@@ -1,0 +1,33 @@
+class Solution:
+    def removeLoop(self, head):
+        slow = head
+        fast = head
+
+        # Detect loop
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                break
+        else:
+            return True   # No loop
+
+        slow = head
+
+        # If loop starts at head
+        if slow == fast:
+            while fast.next != slow:
+                fast = fast.next
+            fast.next = None
+            return True
+
+        # Find start of loop
+        while slow.next != fast.next:
+            slow = slow.next
+            fast = fast.next
+
+        # Remove loop
+        fast.next = None
+
+        return True
