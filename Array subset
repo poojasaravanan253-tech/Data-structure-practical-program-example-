@@ -1,0 +1,13 @@
+from collections import Counter
+
+class Solution:
+    def isSubset(self, a, b):
+        countA = Counter(a)
+
+        for num in b:
+            if countA[num] > 0:
+                countA[num] -= 1
+            else:
+                return False
+
+        return True
